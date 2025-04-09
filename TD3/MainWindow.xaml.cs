@@ -24,14 +24,16 @@ namespace TD3
         {
             InitializeComponent();
         }
-
+        
+        //Добавляем проект
         private void addNewProject(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(scr1NameProject.Text))
             {
                 string projectName = scr1NameProject.Text;
-                projectBox.Items.Add(scr1NameProject.Text);
+                projectBox.Items.Add(new ProjectModel { Project = projectName});
                 scr1NameProject.Clear();
+
                 try
                 {
                     using (var conn = new SQLiteConnection($"Data Source={dbPass.CurrentDbPath}"))
@@ -42,14 +44,18 @@ namespace TD3
                         cmd.Parameters.AddWithValue("@project", projectName);
                         cmd.ExecuteNonQuery();
                     }
+
+                    //Добавляем объект ProjectModel в ListBox
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Ошибка при добавлении проекта в базу данных:\n{ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-        } //Добавляет проект
+        } //Добавляем проект
 
+        //Удаляем проект    
         private void delProject(object sender, RoutedEventArgs e)
         {
             
@@ -174,7 +180,7 @@ namespace TD3
                     MessageBox.Show($"Ошибка при создании базы: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-        }
+        } //Создаем новую базу данных
 
         //Считываем из вновь открытой базы список проектов
         private void OpenDb_Click(object sender, RoutedEventArgs e)
@@ -203,15 +209,20 @@ namespace TD3
                     {
                         conn.Open();
 
-                        var cmd = new SQLiteCommand("SELECT Project FROM Projects", conn);
+                        var cmd = new SQLiteCommand("SELECT ProjectID, Project FROM Projects", conn);
                         var reader = cmd.ExecuteReader();
 
                         projectBox.Items.Clear();
 
                         while (reader.Read())
                         {
-                            string? projectName = reader["Project"].ToString();
-                            projectBox.Items.Add(projectName);
+                            var project1 = new ProjectModel
+                            {
+                                ProjectID = Convert.ToInt32(reader["ProjectID"]),
+                                Project = reader["Project"].ToString()
+                            };
+                           
+                            projectBox.Items.Add(project1);
                         }
                     }
 
@@ -222,17 +233,18 @@ namespace TD3
                     MessageBox.Show($"Ошибка при чтении базы:\n{ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-        }
+        } //Считываем из вновь открытой базы список проектов
 
         //Открываем новое окно
-        private void ProjectListBox_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void MDC_OpenProj(object sender, RoutedEventArgs e)
         { 
-        if (projectBox.SelectedItems is ProjectModel selectedProject)
+        if (projectBox.SelectedItem is ProjectModel selectedProject)
             {
+                MessageBox.Show("Открываем окно...");
                 var taskWindow = new TaskWindow(selectedProject.ProjectID, selectedProject.Project);
                 taskWindow.ShowDialog(); // можно и Show() если не модально
             }
-        }
+        } //Открываем новое окно
 
         //Открываем новое окно pplList
         private void openPpl (object sender, RoutedEventArgs e)

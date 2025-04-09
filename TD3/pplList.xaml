@@ -1,4 +1,5 @@
 ﻿<Window x:Class="TD3.pplList"
+         WindowStyle="None"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,6 +16,7 @@
             <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Height="52" Width="235"><Run Text="Чтобы удалить участника, сделайте выделение в списке выше левой кнопкой мышки и нажмите кнопку "/><Run Language="ru-ru" Text="&quot;УДАЛИТЬ&quot;"/></TextBlock>
 
             <Button Click="delPpl"  Content="УДАЛИТЬ" FontSize="14"/>
+            <Button Click="close"  Content="ЗАКРЫТЬ" FontSize="14"/>
         </StackPanel>
 
     </Grid>

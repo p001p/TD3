@@ -11,7 +11,8 @@ namespace TD3
         public int ProjectID { get; set; }
         public string? Project { get; set; }
 
-        public override string ToString()
+        public override string? ToString()
+            
         {
             return Project; // чтобы в ListBox отображалось красиво
         }

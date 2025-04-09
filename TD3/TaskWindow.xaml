@@ -8,14 +8,14 @@
         Title="TaskWindow" Height="450" Width="610">
     <Grid>
         <TextBlock Text="Задачи:" FontWeight="Bold" Margin="15,13,480,402"/>
-        <ListBox x:Name="taskListBox" Margin="15,39,20,305" BorderThickness="1" BorderBrush="Gray">
+        <ListBox x:Name="taskListBox" Margin="15,39,20,305" BorderThickness="1" BorderBrush="Gray" SelectionChanged="taskListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <!-- Ответственный -->
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="350"/>
                             <!-- Описание задачи -->
                         </Grid.ColumnDefinitions>
 
@@ -25,8 +25,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE710;" FontSize="20" HorizontalAlignment="Left" Margin="71,10,0,0" VerticalAlignment="Top" />
-        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE738;" FontSize="20" HorizontalAlignment="Left" Margin="565,10,0,0" VerticalAlignment="Top"/>
+        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE710;" FontSize="20" HorizontalAlignment="Left" Margin="71,10,0,0" VerticalAlignment="Top" Click="openWindowAddTask"/>
+        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE738;" FontSize="20" HorizontalAlignment="Left" Margin="565,10,0,0" VerticalAlignment="Top" Click="deleteTask" />
+        <Button x:Name="editTaskButton" IsEnabled="False" FontFamily="Segoe MDL2 Assets" Content="&#xE70F;" FontSize="20" HorizontalAlignment="Left" Margin="126,10,0,0" VerticalAlignment="Top" Click="openEditWindowAddTask"/>
 
 
     </Grid>

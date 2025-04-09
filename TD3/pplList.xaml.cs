@@ -107,5 +107,10 @@ namespace TD3
             }
         }
 
+        private void close(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true; // ← это то, что вернёт ShowDialog()
+            this.Close(); // Можно не писать, WPF закроет окно сам
+        }
     }
 }

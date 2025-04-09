@@ -8,7 +8,9 @@ namespace TD3
 {
     public class TaskModel
     {
-        public string Name { get; set; }    // Описание задачи
-        public string Person { get; set; }  // Ответственный
+        public string? Name { get; set; }    // Описание задачи
+        public string? Person { get; set; }  // Ответственный
+        public int TaskID { get; set; }
+        public override string ToString() => $"{Person}: {Name}";
     }
 }
