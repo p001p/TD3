@@ -1,0 +1,21 @@
+﻿<Window x:Class="TD3.pplList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TD3"
+        mc:Ignorable="d"
+        Title="Список участников" Height="420" Width="295">
+    <Grid>
+        <ListBox x:Name="pplListBD" Margin="0,0,0,230"/>
+        <StackPanel HorizontalAlignment="Center" Margin="0,179,0,0" Orientation="Vertical" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Height="35" Width="275"> <Run Text="Чтобы добавить участника, введите его Ф.И.О. в поле ниже и нажмите "/><Run Language="ru-ru" Text="кнопку &quot;ДОБАВИТЬ&quot;"/></TextBlock>
+            <TextBox x:Name="newPplName" Margin="0,0,0,10" TextWrapping="Wrap" Text="" Width="220" Height="23"/>
+            <Button Click="newPpl" Margin="0,0,0,10" Content="ДОБАВИТЬ" FontSize="14" RenderTransformOrigin="0.167,1.668"/>
+            <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" Height="52" Width="235"><Run Text="Чтобы удалить участника, сделайте выделение в списке выше левой кнопкой мышки и нажмите кнопку "/><Run Language="ru-ru" Text="&quot;УДАЛИТЬ&quot;"/></TextBlock>
+
+            <Button Click="delPpl"  Content="УДАЛИТЬ" FontSize="14"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

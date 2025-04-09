@@ -1,0 +1,35 @@
+﻿<Window x:Class="TD3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TD3"
+        mc:Ignorable="d"
+        Title="TD3" Height="380" Width="320">
+
+    <Grid>
+
+        <ListBox x:Name="projectBox" Margin="10,104,10,130" BorderBrush="DarkGray" Foreground="Black" MouseDoubleClick="ProjectListBox_MouseDoubleClick" >
+        
+        </ListBox>
+        <Button Content="ОТКРЫТЬ БАЗУ ДАННЫХ" HorizontalAlignment="Left" Margin="15,9,0,0" VerticalAlignment="Top" Width="285" Click="OpenDb_Click"/>
+        <Button Content="СОЗДАТЬ БАЗУ ДАННЫХ" HorizontalAlignment="Left" Margin="15,34,0,0" VerticalAlignment="Top" Width="285" Click="CreateDb_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="11,84,0,0" TextWrapping="Wrap" Text="Список проектов в базе данных:" VerticalAlignment="Top"/>
+        <Expander HorizontalAlignment="Center" Height="105" Header="Добавить проект" Margin="0,244,0,0" VerticalAlignment="Top" Width="300" IsExpanded="False">
+            <Grid Margin="0,0,0,2">
+                <TextBlock HorizontalAlignment="Left" Margin="5,7,0,0" TextWrapping="Wrap" Text="Введите название проекта:" VerticalAlignment="Top"/>
+                <TextBox x:Name="scr1NameProject" HorizontalAlignment="Center" Margin="0,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290"/>
+                <Button Content="Добавить" HorizontalAlignment="Left" Margin="234,48,0,0" VerticalAlignment="Top" Width="60" Click="addNewProject"/>
+            </Grid>
+
+        </Expander>
+        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE74D;" FontSize="20"  HorizontalAlignment="Left" Margin="230,75,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0,0.627" Click="delProject"/>
+        <Button FontFamily="Segoe MDL2 Assets" Content="&#xE736;" FontSize="20"  HorizontalAlignment="Left" Margin="273,75,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0,0.627" Click="openPpl"/>
+
+
+
+
+
+    </Grid>
+
+</Window>
